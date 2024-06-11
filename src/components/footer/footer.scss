@@ -1,0 +1,17 @@
+@import "../../style.scss";
+
+.footer {
+    @include themify($themes) {
+        padding: 20px;
+        background-color: themed("bg");
+        color: themed("textColor");
+        height: 80px;
+        .footer-wrapper{
+            padding-top: 10px;
+            p{
+                text-align: center;
+                font-size: small;
+            }
+        }
+    }
+}
