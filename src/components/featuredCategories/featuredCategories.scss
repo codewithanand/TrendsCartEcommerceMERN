@@ -1,0 +1,31 @@
+@import "../../style.scss";
+
+.slider-container {
+    @include themify($themes) {
+        width: 80%;
+        margin: 0 auto;
+        padding: 40px 0;
+
+        .featured-title {
+            color: themed("textColor");
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: themed("borderSoft");
+        }
+
+        .category-card {
+            .category-title-link{
+                text-transform: uppercase;
+                .category-title {
+                    width: 95%;
+                    border-radius: 8px;
+                    padding: 20px 10px;
+                    background-color: themed("bg");
+                    font-size: 18px;
+                    color: themed("textColor");
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

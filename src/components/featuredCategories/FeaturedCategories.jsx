@@ -1,32 +1,30 @@
 import React from 'react'
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 
-import './featuredSlider.scss'
+import "./featuredCategories.scss"
 
-const products = [
+const categories = [
     {
         id: 1,
-        name: 'Product 1',
+        name: 'Category 1',
         image: 'https://via.placeholder.com/300',
-        price: '$100',
     },
     {
         id: 2,
-        name: 'Product 2',
+        name: 'Category 2',
         image: 'https://via.placeholder.com/300',
-        price: '$200',
     },
     {
         id: 3,
-        name: 'Product 3',
+        name: 'Category 3',
         image: 'https://via.placeholder.com/300',
-        price: '$300',
     },
-    // Add more products as needed
+    // Add more categories as needed
 ];
 
-const FeaturedSlider = () => {
 
+const FeaturedCategories = () => {
     const settings = {
         dots: false,
         infinite: true,
@@ -55,13 +53,13 @@ const FeaturedSlider = () => {
 
     return (
         <div className="slider-container">
-            <h2 className='featured-title'>Featured Products</h2>
+            <h2 className='featured-title'>Featured Categories</h2>
             <Slider {...settings}>
-                {products.map((product) => (
-                    <div key={product.id} className="product-card">
-                        <img className='product-img' src={product.image} alt={product.name} />
-                        <h3 className='product-title'>{product.name}</h3>
-                        <p className='product-price'>{product.price}</p>
+                {categories.map((category) => (
+                    <div key={category.id} className="category-card">
+                        <Link className='category-title-link' to={`/category/${category.id}`}>
+                            <h3 className='category-title'>{category.name}</h3>
+                        </Link>
                     </div>
                 ))}
             </Slider>
@@ -69,4 +67,4 @@ const FeaturedSlider = () => {
     )
 }
 
-export default FeaturedSlider
+export default FeaturedCategories

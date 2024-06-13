@@ -1,0 +1,18 @@
+@import "../../style.scss";
+
+.product {
+    @include themify($themes) {
+        width: 100%;
+        min-height: calc(100vh - 160px);
+        background-color: themed("bgSoft");
+
+        .product-wrapper{
+            padding-top: 50px;
+            width: 1024px;
+            margin: 0 auto;
+            h3{
+                color: themed("textColor");
+            }
+        }
+    }
+}

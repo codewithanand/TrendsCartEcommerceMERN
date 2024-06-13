@@ -19,12 +19,16 @@ import Register from "./pages/register/Register";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Categories from "./pages/categories/Categories";
+import Products from "./pages/products/Products";
+import Product from "./pages/product/Product";
+
 
 function App() {
   const { currentUser } = useContext(AuthContext);
   const { darkMode } = useContext(DarkModeContext);
 
-  const Layout = () => {
+  const ClientLayout = () => {
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar />
@@ -34,12 +38,15 @@ function App() {
     );
   }
 
+
+
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
       return <Navigate to="/login" />
     }
     return children
   }
+
 
   const UnProtectedRoute = ({ children }) => {
     if (currentUser) {
@@ -50,19 +57,30 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Layout/>,
+      element: <ClientLayout/>,
       children: [
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/categories",
+          element: <Categories />,
+        },
+        {
+          path: "/products",
+          element: <Products />,
+        },
+        {
+          path: "/category-slug/product-slug",
+          element: <Product />,
         },
       ]
     },
     {
       element: (
         <ProtectedRoute>
-          <Layout />
+          <ClientLayout />
         </ProtectedRoute>
       ),
       children: [
@@ -76,7 +94,7 @@ function App() {
     {
       element: (
         <UnProtectedRoute>
-          <Layout />
+          <ClientLayout />
         </UnProtectedRoute>
       ),
       children: [
